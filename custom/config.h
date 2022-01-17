@@ -24,6 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef MATRIX_COL_PINS
 #define MATRIX_COL_PINS { C6, D7, C7, B4, B5 }
 
+/* needed for teensy 2.0 to properly detect the master */
+#define SPLIT_USB_DETECT
+
 /* Use I2C or Serial, not both */
 #define USE_SERIAL
 

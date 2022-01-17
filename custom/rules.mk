@@ -4,6 +4,9 @@ MCU = atmega32u4
 # Bootloader selection
 BOOTLOADER = halfkay
 
+# serial driver
+SERIAL_DRIVER = bitbang
+
 # Build Options
 #   change yes to no to disable
 #
