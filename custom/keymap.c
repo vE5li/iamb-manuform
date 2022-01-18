@@ -5,8 +5,8 @@
 #define _LOWER 2
 
 #define CTL_ESC    CTL_T(KC_ESC)
-#define RAISE_SPC  MT(_RAISE, KC_SPC)
-#define LOWER_BSPC MT(_LOWER, KC_BSPC)
+#define RAISE_SPC  LT(_RAISE, KC_SPC)
+#define LOWER_BSPC LT(_LOWER, KC_BSPC)
 #define SHIFT_ENT  SFT_T(KC_ENT)
 
 #define KC_ML KC_MS_LEFT
