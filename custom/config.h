@@ -27,11 +27,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* needed for teensy 2.0 to properly detect the master */
 #define SPLIT_USB_DETECT
 
-/* Use I2C or Serial, not both */
+/* use serial in order for rgb to work */
 #define USE_SERIAL
 
-/* Select hand configuration */
+/* use right as master (left because of FLIP_HALF) */
 #define MASTER_LEFT
 
 /* flip thumb clusters */
 #define FLIP_HALF
+
+/* rgb lighting */
+#undef RGBLED_NUM
+#define RGBLED_NUM 8
+#define RGBLED_SPLIT { 4, 4 }
+#define RGBLIGHT_ANIMATIONS
