@@ -116,10 +116,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 static uint8_t magic_combo_state = 0;
 
-void keyboard_pre_init_user(void) {
-    setPinOutput(F6);
-}
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     if (keycode == KC_P) {
@@ -128,7 +124,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         else
             magic_combo_state &= ~(0b00000001);
     }
-
 
     //if (keycode == KC_LALT) {
     //  if (record->event.pressed)
@@ -157,8 +152,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     //}
 
     if (magic_combo_state == 0b000001) {
-        writePinHigh(F6);
-        return false;
+        bootloader_jump();
     }
 
     return true;
