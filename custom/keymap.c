@@ -170,6 +170,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     if (magic_combo_state == 0b000001) {
         reset_teensy();
+        return false;
     }
 
     return true;
