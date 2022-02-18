@@ -1,3 +1,5 @@
+#include "quantum.h"
+
 #include QMK_KEYBOARD_H
 
 #define _BASE 0
@@ -111,6 +113,56 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______, _______,  _______, _______
     )
 };
+
+static uint8_t magic_combo_state = 0;
+
+void keyboard_pre_init_user(void) {
+    setPinOutput(F6);
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+    if (keycode == KC_P) {
+        if (record->event.pressed)
+            magic_combo_state |= 0b00000001;
+        else
+            magic_combo_state &= ~(0b00000001);
+    }
+
+
+    //if (keycode == KC_LALT) {
+    //  if (record->event.pressed)
+    //      magic_combo_state |= 0b00000001;
+    //  else
+    //      magic_combo_state &= ~(0b00000001);
+    //}
+
+    //if (keycode == KC_LSFT) {
+    //  if (record->event.pressed)
+    //      magic_combo_state |= 0b00000010;
+    //  else
+    //      magic_combo_state &= ~(0b00000010);
+    //}
+
+    //if (keycode == KC_Z) {
+    //  if (record->event.pressed)
+    //      magic_combo_state |= 0b00000100;
+    //  else
+    //      magic_combo_state &= ~(0b00000100);
+    //}
+
+    //if (magic_combo_state == 0b00000111) {
+    //  writePinHigh(F6);
+    //  return false;
+    //}
+
+    if (magic_combo_state == 0b000001) {
+        writePinHigh(F6);
+        return false;
+    }
+
+    return true;
+}
 
 void persistent_default_layer_set(uint16_t default_layer) {
     eeconfig_update_default_layer(default_layer);
