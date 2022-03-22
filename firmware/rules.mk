@@ -1,13 +1,8 @@
-# MCU name
 MCU = atmega32u4
-
-# Bootloader selection
 BOOTLOADER = halfkay
-
-# serial driver
 SERIAL_DRIVER = bitbang
 
-# Build Options
+# build options
 BOOTMAGIC_ENABLE = no       # Enable Bootmagic Lite
 MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control
