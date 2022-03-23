@@ -35,7 +35,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MOUSEKEY_TIME_TO_MAX 10
 #define MOUSEKEY_MAX_SPEED   7
 
-
+/* mouse wheel config */
 #define MOUSEKEY_WHEEL_INTERVAL 20
 #define MOUSEKEY_WHEEL_DELAY 0
 #define MOUSEKEY_WHEEL_TIME_TO_MAX 10
@@ -86,8 +86,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLED_SPLIT { 22, 22 }
 
 /* led brightness and animations */
-#define RGBLIGHT_LIMIT_VAL 150
-#define RGBLIGHT_VAL_STEP 30
+#define RGBLIGHT_LIMIT_VAL 200
+#define RGBLIGHT_VAL_STEP 50
 #define RGBLIGHT_ANIMATIONS
 
 /* temporary */
