@@ -31,19 +31,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         DE_A,    DE_R,    DE_S,    DE_T,    DE_G,                                         DE_M,    DE_N,    DE_E,    DE_I,    DE_O,
         DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,                                         DE_K,    DE_H,    DE_UDIA, DE_ODIA, DE_ADIA,
                  _______, _______,                                                                          _______, _______,
-                                   CTL_ESC, RS_SPC,                                       SMB_BSP, SFT_ENT,
-                                                     KC_LGUI, _______,  KC_LALT, LOWER,
-                                                     KC_HOME, _______,  _______, KC_END
+                                   CTL_ESC, RS_SPC,  KC_LGUI,                    LOWER,   SMB_BSP, SFT_ENT,
+                                            KC_DEL,  KC_LSFT,                    KC_LALT, KC_BSPC
     ),
 
     [_RAISE] = LAYOUT(
-        KC_WH_U, KC_MB1,  KC_MU,   KC_MB2,  _______,                                      KC_VOLU, KC_MB1,  KC_UP,   KC_MB2,  KC_PGUP,
-        KC_WH_D, KC_ML,   KC_MD,   KC_MR,   KC_TAB,                                       KC_MUTE, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,
-        _______, _______, _______, _______, _______,                                      KC_VOLD, RGB_TOG, RGB_MOD, RGB_VAI, RGB_VAD,
+        KC_WH_U, KC_MB1,  KC_MU,   KC_MB2,  KC_HOME,                                      KC_END,  KC_MB1,  KC_UP,   KC_MB2,  KC_PGUP,
+        KC_WH_D, KC_ML,   KC_MD,   KC_MR,   KC_TAB,                                       KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,
+        _______, _______, _______, _______, _______,                                      KC_DEL,  RGB_TOG, RGB_MOD, RGB_VAI, RGB_VAD,
                  _______, _______,                                                                          _______, _______,
-                                   _______, _______,                                      _______, _______,
-                                                     _______, _______,  _______, _______,
-                                                     _______, _______,  _______, _______
+                                   _______, _______, _______,                    _______, _______, _______,
+                                            _______, _______,                    _______, _______
     ),
 
     [_LOWER] = LAYOUT(
@@ -51,9 +49,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
         _______, _______, _______, _______, _______,                                      _______, _______, _______, _______, _______,
                  _______, _______,                                                                          _______, _______,
-                                   _______, _______,                                      _______, _______,
-                                                     _______, _______,  _______, _______,
-                                                     _______, _______,  _______, _______
+                                   _______, _______, _______,                    _______, _______, _______,
+                                            _______, _______,                    _______, _______
     ),
 
     [_SYMBOLS] = LAYOUT(
@@ -61,41 +58,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     	DE_COLN, DE_LABK, DE_LCBR, DE_LBRC, DE_LPRN,                                      DE_RPRN, DE_RBRC, DE_RCBR, DE_RABK, DE_SCLN,
     	DE_BSLS, DE_PERC, DE_PIPE, DE_HASH, DE_COMM,                                      DE_DOT,  DE_MINS, DE_TILD, DE_UNDS, DE_PLUS,
                  DE_DEG,  DE_GRV,                                                                          _______, _______,
-                                   DE_SECT, DE_CIRC,                                      _______, _______,
-    				                                 DE_EURO, DE_MICR,  _______, _______,
-    		                                         _______, _______,  _______, _______
+                                   DE_SECT, DE_CIRC, DE_EURO,                    _______, _______, _______,
+                                            DE_MICR, _______,                    _______, _______
     )
 };
 
-
-
-static uint8_t magic_combo_state = 0;
+static uint8_t combo_state = 0;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 #ifdef LEFT
     uint16_t modifier = KC_LGUI;
-    uint16_t trigger = DE_B;
+    uint16_t trigger = DE_Z;
 #else
-    uint16_t modifier = KC_LALT;
-    uint16_t trigger = DE_J;
+    uint16_t modifier = LOWER;
+    uint16_t trigger = DE_ADIA;
 #endif
 
     if (keycode == modifier) {
       if (record->event.pressed)
-          magic_combo_state |= 0b00000001;
+          combo_state |= 0b1;
       else
-          magic_combo_state &= ~(0b00000001);
+          combo_state &= ~(0b1);
     }
 
     if (keycode == trigger) {
       if (record->event.pressed)
-          magic_combo_state |= 0b00000010;
+          combo_state |= 0b10;
       else
-          magic_combo_state &= ~(0b00000010);
+          combo_state &= ~(0b10);
     }
 
-    if (magic_combo_state == 0b00000011) {
+    if (combo_state == 0b11) {
         bootloader_jump();
         return false;
     }
