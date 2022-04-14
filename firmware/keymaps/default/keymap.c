@@ -9,6 +9,8 @@
 #define _SYMBOLS 3
 
 #define CTL_ESC CTL_T(KC_ESC)
+#define CTL_LFT LCTL(KC_LEFT)
+#define CTL_RGT LCTL(KC_RIGHT)
 #define RS_SPC LT(_RAISE, KC_SPC)
 #define SMB_BSP LT(_SYMBOLS, KC_BSPC)
 #define SFT_ENT SFT_T(KC_ENT)
@@ -32,14 +34,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,                                         DE_K,    DE_H,    DE_UDIA, DE_ODIA, DE_ADIA,
                  _______, _______,                                                                          _______, _______,
                                    CTL_ESC, RS_SPC,  KC_LGUI,                    LOWER,   SMB_BSP, SFT_ENT,
-                                            KC_DEL,  KC_LSFT,                    KC_LALT, KC_BSPC
+                                   KC_DEL,  KC_LSFT,                    KC_LALT, KC_LCTL
     ),
 
     [_RAISE] = LAYOUT(
         KC_WH_U, KC_MB1,  KC_MU,   KC_MB2,  KC_HOME,                                      KC_END,  KC_MB1,  KC_UP,   KC_MB2,  KC_PGUP,
         KC_WH_D, KC_ML,   KC_MD,   KC_MR,   KC_TAB,                                       KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,
-        _______, _______, _______, _______, _______,                                      KC_DEL,  RGB_TOG, RGB_MOD, RGB_VAI, RGB_VAD,
-                 _______, _______,                                                                          _______, _______,
+        _______, _______, _______, _______, _______,                                      KC_DEL,  CTL_LFT, RGB_TOG, CTL_RGT, _______,
+                 _______, _______,                                                                          RGB_VAI, RGB_VAD,
                                    _______, _______, _______,                    _______, _______, _______,
                                             _______, _______,                    _______, _______
     ),

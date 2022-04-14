@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "config_common.h"
 
 /* choose which side of the keyboard to build the firmware for */
-//#define LEFT
+#define LEFT
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID    0x444D

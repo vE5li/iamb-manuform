@@ -1,4 +1,4 @@
-(ns dactyl-keyboard.dactyl
+(ns iamb-keyboard.iamb
   (:refer-clojure :exclude [use import])
   (:require [clojure.core.matrix :refer [array matrix mmul]]
             [scad-clj.scad :refer :all]
