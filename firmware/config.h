@@ -42,9 +42,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MOUSEKEY_WHEEL_MAX_SPEED 5
 #define MOUSEKEY_WHEEL_DELAY 0
 
-/* Set 0 if debouncing isn't needed */
-#define DEBOUNCE 5
-
 /* serial pin for both halfs */
 #define USE_SERIAL
 #define SOFT_SERIAL_PIN D0
@@ -68,14 +65,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_DI_PIN B0
 #endif
 
-/*#define RGBLIGHT_LED_MAP { 1, 2, 3, 4, 5, \
-                           6, 7, 8, 9, 10, \
-                           11, 12, 13, 14, 15, \
-                           16, 17, 18, 19, 20, \
-                           21, 22, 23 }*/
-
 /* pin to detect handedness */
 #define SPLIT_HAND_PIN D6
+
+/* temporary and only needed on the teensy */
+#define SPLIT_USB_DETECT
 
 /* typing behaviour */
 #define PERMISSIVE_HOLD
@@ -90,5 +84,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_VAL_STEP 50
 #define RGBLIGHT_ANIMATIONS
 
-/* temporary */
-#define SPLIT_USB_DETECT
+/* remap the leds to make both sides symetrical */
+#define RGBLIGHT_LED_MAP { 0, 1, 2, 3, 4, \
+                           5, 6, 7, 8, 9, \
+                           10, 11, 12, 13, 14, \
+                           15, 16, 17, 18, 19, \
+                           20, 21, \
+                           26, 25, 24, 23, 22, \
+                           31, 30, 29, 28, 27, \
+                           36, 35, 34, 33, 32, \
+                           41, 40, 39, 38, 37, \
+                           43, 42 }
