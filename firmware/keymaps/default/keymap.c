@@ -34,13 +34,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,                                         DE_K,    DE_H,    DE_UDIA, DE_ODIA, DE_ADIA,
                  _______, _______,                                                                          _______, _______,
                                    CTL_ESC, SPL_SPC, KC_LGUI,                    NUMBERS, SMB_BSP, SFT_ENT,
-                                   KC_DEL,  KC_LSFT,                             KC_LALT, KC_LCTL
+                                            KC_LSFT, KC_LALT,                    KC_LALT, KC_LCTL
     ),
 
     [_SPECIAL] = LAYOUT(
         KC_WH_U, KC_MB1,  KC_MU,   KC_MB2,  KC_HOME,                                      KC_END,  KC_MB1,  KC_UP,   KC_MB2,  KC_PGUP,
         KC_WH_D, KC_ML,   KC_MD,   KC_MR,   KC_TAB,                                       KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,
-        _______, _______, _______, _______, _______,                                      KC_DEL,  CTL_LFT, RGB_TOG, CTL_RGT, _______,
+        _______, _______, _______, _______, _______,                                      KC_DEL,  CTL_LFT, RGB_TOG, CTL_RGT, RGB_MOD,
                  _______, _______,                                                                          RGB_VAI, RGB_VAD,
                                    _______, _______, _______,                    _______, _______, _______,
                                             _______, _______,                    _______, _______
