@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,                                         DE_K,    DE_H,    DE_UDIA, DE_ODIA, DE_ADIA,
                  _______, _______,                                                                          _______, _______,
                                    CTL_ESC, RS_SPC,  KC_LGUI,                    LOWER,   SMB_BSP, SFT_ENT,
-                                   KC_DEL,  KC_LSFT,                    KC_LALT, KC_LCTL
+                                   KC_DEL,  KC_LSFT,                             KC_LALT, KC_LCTL
     ),
 
     [_RAISE] = LAYOUT(
