@@ -33,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         DE_A,    DE_R,    DE_S,    DE_T,    DE_G,                                         DE_M,    DE_N,    DE_E,    DE_I,    DE_O,
         DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,                                         DE_K,    DE_H,    DE_UDIA, DE_ODIA, DE_ADIA,
                  _______, _______,                                                                          _______, _______,
-                                   CTL_ESC, SPL_SPC,  KC_LGUI,                    NUMBERS, SMB_BSP, SFT_ENT,
+                                   CTL_ESC, SPL_SPC, KC_LGUI,                    NUMBERS, SMB_BSP, SFT_ENT,
                                    KC_DEL,  KC_LSFT,                             KC_LALT, KC_LCTL
     ),
 
