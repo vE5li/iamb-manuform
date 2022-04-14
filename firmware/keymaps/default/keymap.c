@@ -4,14 +4,14 @@
 #include QMK_KEYBOARD_H
 
 #define _BASE 0
-#define _RAISE 1
-#define _LOWER 2
+#define _SPECIAL 1
+#define _NUMBERS 2
 #define _SYMBOLS 3
 
 #define CTL_ESC CTL_T(KC_ESC)
 #define CTL_LFT LCTL(KC_LEFT)
 #define CTL_RGT LCTL(KC_RIGHT)
-#define RS_SPC LT(_RAISE, KC_SPC)
+#define SPL_SPC LT(_SPECIAL, KC_SPC)
 #define SMB_BSP LT(_SYMBOLS, KC_BSPC)
 #define SFT_ENT SFT_T(KC_ENT)
 
@@ -22,8 +22,8 @@
 #define KC_MB1 KC_MS_BTN1
 #define KC_MB2 KC_MS_BTN2
 
-#define RAISE MO(_RAISE)
-#define LOWER MO(_LOWER)
+#define SPECIAL MO(_SPECIAL)
+#define NUMBERS MO(_NUMBERS)
 #define SYMBOLS MO(_SYMBOLS)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -33,11 +33,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         DE_A,    DE_R,    DE_S,    DE_T,    DE_G,                                         DE_M,    DE_N,    DE_E,    DE_I,    DE_O,
         DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,                                         DE_K,    DE_H,    DE_UDIA, DE_ODIA, DE_ADIA,
                  _______, _______,                                                                          _______, _______,
-                                   CTL_ESC, RS_SPC,  KC_LGUI,                    LOWER,   SMB_BSP, SFT_ENT,
+                                   CTL_ESC, SPL_SPC,  KC_LGUI,                    NUMBERS, SMB_BSP, SFT_ENT,
                                    KC_DEL,  KC_LSFT,                             KC_LALT, KC_LCTL
     ),
 
-    [_RAISE] = LAYOUT(
+    [_SPECIAL] = LAYOUT(
         KC_WH_U, KC_MB1,  KC_MU,   KC_MB2,  KC_HOME,                                      KC_END,  KC_MB1,  KC_UP,   KC_MB2,  KC_PGUP,
         KC_WH_D, KC_ML,   KC_MD,   KC_MR,   KC_TAB,                                       KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,
         _______, _______, _______, _______, _______,                                      KC_DEL,  CTL_LFT, RGB_TOG, CTL_RGT, _______,
@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______,                    _______, _______
     ),
 
-    [_LOWER] = LAYOUT(
+    [_NUMBERS] = LAYOUT(
         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                                        KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
         _______, _______, _______, _______, _______,                                      _______, _______, _______, _______, _______,
@@ -73,7 +73,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     uint16_t modifier = KC_LGUI;
     uint16_t trigger = DE_Z;
 #else
-    uint16_t modifier = LOWER;
+    uint16_t modifier = NUMBERS;
     uint16_t trigger = DE_ADIA;
 #endif
 
