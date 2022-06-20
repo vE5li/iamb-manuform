@@ -73,6 +73,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* typing behaviour */
 #define PERMISSIVE_HOLD
+#define HOLD_ON_OTHER_KEY_PRESS
 #define TAPPING_FORCE_HOLD
 
 /* number of leds on each half */
