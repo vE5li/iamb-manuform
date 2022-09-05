@@ -1,5 +1,5 @@
 # Description
-The iamb manuform is a dactyl manuform 4x5, based on the [dactyl manuform mini](https://github.com/l4u/dactyl-manuform-mini-keyboard), running on two Teensy 2.0s. It has two USB Type-C ports for connectivity and per-key RGB.
+The Iamb Manuform is a Dactyl Manuform 4x5, based on the [Dactyl Manuform mini](https://github.com/l4u/dactyl-manuform-mini-keyboard), running on two Teensy 2.0s. It has two USB Type-C ports for connectivity and per-key RGB.
 
 ![both halves](images/both_halves.jpg)
 
