@@ -56,12 +56,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_SYMBOLS] = LAYOUT(
-    	DE_EXLM, DE_DQUO, DE_QUES, DE_AT,   DE_DLR,                                       DE_AMPR, DE_EQL,  DE_SLSH, DE_QUOT, DE_ASTR,
-    	DE_COLN, DE_LABK, DE_LCBR, DE_LBRC, DE_LPRN,                                      DE_RPRN, DE_RBRC, DE_RCBR, DE_RABK, DE_SCLN,
-    	DE_BSLS, DE_PERC, DE_PIPE, DE_HASH, DE_COMM,                                      DE_DOT,  DE_MINS, DE_TILD, DE_UNDS, DE_PLUS,
+        DE_EXLM, DE_DQUO, DE_QUES, DE_AT,   DE_DLR,                                       DE_AMPR, DE_EQL,  DE_SLSH, DE_QUOT, DE_ASTR,
+        DE_COLN, DE_LABK, DE_LCBR, DE_LBRC, DE_LPRN,                                      DE_RPRN, DE_RBRC, DE_RCBR, DE_RABK, DE_SCLN,
+        DE_BSLS, DE_PERC, DE_PIPE, DE_HASH, DE_COMM,                                      DE_DOT,  DE_MINS, DE_TILD, DE_UNDS, DE_PLUS,
                  DE_DEG,  DE_GRV,                                                                          _______, _______,
-                                   DE_SECT, DE_CIRC, DE_EURO,                    _______, _______, _______,
-                                            DE_MICR, _______,                    _______, _______
+                                   DE_SECT, _______, DE_EURO,                    _______, _______, _______,
+                                            DE_MICR, DE_CIRC,                    _______, _______
     )
 };
 
