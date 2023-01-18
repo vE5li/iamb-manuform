@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_SPECIAL] = LAYOUT(
-        KC_WH_U, KC_MB1,  KC_MU,   KC_MB2,  KC_HOME,                                      KC_END,  KC_MB1,  KC_UP,   KC_MB2,  KC_PGUP,
+        KC_WH_U, KC_MB1,  KC_MU,   KC_MB2,  KC_HOME,                                      KC_END,  KC_INS,  KC_UP,   KC_MB2,  KC_PGUP,
         KC_WH_D, KC_ML,   KC_MD,   KC_MR,   KC_TAB,                                       KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,
         _______, _______, _______, _______, _______,                                      KC_DEL,  CTL_LFT, RGB_TOG, CTL_RGT, RGB_MOD,
                  _______, _______,                                                                          RGB_VAI, RGB_VAD,
@@ -59,9 +59,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         DE_EXLM, DE_DQUO, DE_QUES, DE_AT,   DE_DLR,                                       DE_AMPR, DE_EQL,  DE_SLSH, DE_QUOT, DE_ASTR,
         DE_COLN, DE_LABK, DE_LCBR, DE_LBRC, DE_LPRN,                                      DE_RPRN, DE_RBRC, DE_RCBR, DE_RABK, DE_SCLN,
         DE_BSLS, DE_PERC, DE_PIPE, DE_HASH, DE_COMM,                                      DE_DOT,  DE_MINS, DE_TILD, DE_UNDS, DE_PLUS,
-                 DE_DEG,  DE_GRV,                                                                          _______, _______,
-                                   DE_SECT, _______, DE_EURO,                    _______, _______, _______,
-                                            DE_MICR, DE_CIRC,                    _______, _______
+                 _______, _______,                                                                          _______, _______,
+                                   DE_GRV,  _______, DE_CIRC,                    _______, _______, _______,
+                                            DE_DEG,  DE_EURO,                    _______, _______
     )
 };
 
@@ -71,24 +71,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 #ifdef LEFT
     uint16_t modifier = KC_LGUI;
-    uint16_t trigger = DE_Y;
+    uint16_t trigger = DE_Q;
 #else
     uint16_t modifier = NUMBERS;
-    uint16_t trigger = DE_ADIA;
+    uint16_t trigger = KC_F10;
 #endif
 
     if (keycode == modifier) {
-      if (record->event.pressed)
-          combo_state |= 0b1;
-      else
-          combo_state &= ~(0b1);
+        if (record->event.pressed)
+            combo_state |= 0b1;
+        else
+            combo_state &= ~(0b1);
     }
 
     if (keycode == trigger) {
-      if (record->event.pressed)
-          combo_state |= 0b10;
-      else
-          combo_state &= ~(0b10);
+        if (record->event.pressed)
+            combo_state |= 0b10;
+        else
+            combo_state &= ~(0b10);
     }
 
     if (combo_state == 0b11) {
@@ -97,6 +97,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     return true;
+}
+
+void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (keycode == DE_CIRC || keycode == DE_GRV) {
+        if (record->event.pressed)
+            tap_code16(KC_SPC);
+    }
 }
 
 void persistent_default_layer_set(uint16_t default_layer) {
