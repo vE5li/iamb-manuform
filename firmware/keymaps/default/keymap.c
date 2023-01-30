@@ -28,6 +28,12 @@
 #define NUMBERS MO(_NUMBERS)
 #define SYMBOLS MO(_SYMBOLS)
 
+// extern symbols used in iamb_manuform.c
+const uint16_t RESET_LAYER = NUMBERS;
+const uint16_t RESET_KEY = KC_F10;
+const uint16_t ONESHOT_KEYS[] = { DE_CIRC, DE_GRV };
+const uint16_t ONESHOT_COUNT = sizeof(ONESHOT_KEYS) / sizeof(ONESHOT_KEYS[0]);
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_BASE] = LAYOUT(
@@ -75,49 +81,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             DE_DEG,  DE_EURO,                    _______, _______
     ),
 };
-
-static uint8_t combo_state = 0;
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-
-#ifdef LEFT
-    uint16_t modifier = KC_LGUI;
-    uint16_t trigger = DE_Q;
-#else
-    uint16_t modifier = NUMBERS;
-    uint16_t trigger = KC_F10;
-#endif
-
-    if (keycode == modifier) {
-        if (record->event.pressed)
-            combo_state |= 0b1;
-        else
-            combo_state &= ~(0b1);
-    }
-
-    if (keycode == trigger) {
-        if (record->event.pressed)
-            combo_state |= 0b10;
-        else
-            combo_state &= ~(0b10);
-    }
-
-    if (combo_state == 0b11) {
-        bootloader_jump();
-        return false;
-    }
-
-    return true;
-}
-
-void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (keycode == DE_CIRC || keycode == DE_GRV) {
-        if (record->event.pressed)
-            tap_code16(KC_SPC);
-    }
-}
-
-void persistent_default_layer_set(uint16_t default_layer) {
-    eeconfig_update_default_layer(default_layer);
-    default_layer_set(default_layer);
-}

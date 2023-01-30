@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "config_common.h"
 
 /* choose which side of the keyboard to build the firmware for */
-#define LEFT
+//#define LEFT
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID    0x444D
@@ -64,12 +64,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COL_PINS { C6, C7, D4, B5, B4 }
 #define RGB_DI_PIN B0
 #endif
-
-/* pin to detect handedness */
-#define SPLIT_HAND_PIN D6
-
-/* temporary and only needed on the teensy */
-#define SPLIT_USB_DETECT
 
 /* typing behaviour */
 #define PERMISSIVE_HOLD
