@@ -23,6 +23,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* choose which side of the keyboard to build the firmware for */
 //#define LEFT
 
+/* by default the right side will always be the master and handedness
+ * is hardcoded into the firmware, which means that you are forced
+ * to connect the right side to your device for the keyboard to work.
+ * you can enable checking for a usb connection at runtime to make both
+ * sides work as master at the cost of longer start times and your
+ * device needing to be powered on when plugging in the keyboard*/
+//#define DYNAMIC_HANDEDNESS_CHECK
+
 /* USB Device descriptor parameter */
 #define VENDOR_ID    0x444D
 #define MANUFACTURER vE5li
@@ -63,6 +71,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROW_PINS { B1, B2, D3, D6, D7 }
 #define MATRIX_COL_PINS { C6, C7, D4, B5, B4 }
 #define RGB_DI_PIN B0
+#endif
+
+/* detecting handedness */
+#ifdef DYNAMIC_HANDEDNESS_CHECK
+#define SPLIT_HAND_PIN D6
+#define SPLIT_USB_DETECT
 #endif
 
 /* typing behaviour */

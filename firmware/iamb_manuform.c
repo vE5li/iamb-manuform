@@ -1,6 +1,7 @@
 #include "usb_util.h"
 #include "iamb_manuform.h"
 
+#ifndef DYNAMIC_HANDEDNESS_CHECK
 bool is_keyboard_master(void) {
 #ifdef LEFT
     /* without this call the left side will not work */
@@ -18,6 +19,7 @@ bool is_keyboard_left(void) {
     return false;
 #endif
 }
+#endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
