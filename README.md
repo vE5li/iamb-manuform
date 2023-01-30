@@ -63,7 +63,10 @@ Before flashing, you need to make sure that you are compiling the firmware for t
 qmk flash -kb handwired/iamb_manuform -km default
 ```
 
-A small note about the Teensy 2.0: the Teensy can not detect (without modification) if it is being powered by a USB cable or by its pins. That means we have to add `SPLIT_USB_DETECT` to our `config.h` and it also means that the keyboard needs to be connected to a device when it is plugged in, otherwise both sides will think they are the slave and the keyboard won't work. I am not completely happy with this solution but I have not found a way around this restriction yet.
+A small note about the Teensy 2.0: the Teensy can not detect (without modification) if it is being powered by a USB cable or by its pins. That means we have to add `SPLIT_USB_DETECT` to our `config.h` and it also means that the keyboard needs to be connected to a device when it is plugged in, otherwise both sides will think they are the slave and the keyboard won't work. ~~I am not completely happy with this solution but I have not found a way around this restriction yet.~~
+
+##### Update
+Since the firmware already knows which side it is running on at compile-time, I have now opted to hardcode the handedness and information about which side is the master into the firmware. This has some advantages and disadvantages. The major advantages are that the keyboard can boot without the need for a USB connection and the boot process is much faster, the downside is that the right side is now always the master. For those who prefer the old behavior I have added a setting in `config.h` that let's you go back to checking dynamically. There is also a hardware modification that you can make on the Teensy to fix this issue entirely, you can read about it [here](https://github.com/qmk/qmk_firmware/blob/master/docs/feature_split_keyboard.md#hardware-considerations-and-mods).
 
 # Troubleshooting
 If the keyboard is not working after flashing the firmware (or you are unable to flash the firmware at all), make sure that the USB cable you are using has data lines. Also make sure that the keyboard is connected to a running device as you are plugging it in, since the USB connection is how the halves determine the master and slave side. If it is *still* not working, double check that none of the pins on the Teensy are bridged or touching.
