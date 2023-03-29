@@ -18,8 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "config_common.h"
-
 /* choose which side of the keyboard to build the firmware for */
 //#define LEFT
 
@@ -30,12 +28,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * sides work as master at the cost of longer start times and your
  * device needing to be powered on when plugging in the keyboard*/
 //#define DYNAMIC_HANDEDNESS_CHECK
-
-/* USB Device descriptor parameter */
-#define VENDOR_ID    0x444D
-#define MANUFACTURER vE5li
-#define PRODUCT_ID   0x3435
-#define DEVICE_VER   0x0001
 
 /* mouse config */
 #define MOUSEKEY_INTERVAL    20
@@ -82,7 +74,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* typing behaviour */
 #define PERMISSIVE_HOLD
 #define HOLD_ON_OTHER_KEY_PRESS
-#define TAPPING_FORCE_HOLD
+#define QUICK_TAP_TERM 0
 
 /* number of leds on each half */
 #define RGBLED_NUM 44
@@ -91,7 +83,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* led brightness and animations */
 #define RGBLIGHT_LIMIT_VAL 200
 #define RGBLIGHT_VAL_STEP 50
-#define RGBLIGHT_ANIMATIONS
+#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
 
 /* remap the leds to make both sides symetrical */
 #define RGBLIGHT_LED_MAP { 0, 1, 2, 3, 4, \

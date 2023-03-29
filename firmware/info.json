@@ -1,7 +1,13 @@
 {
     "keyboard_name": "iamb-manuform",
-    "url": "",
+    "url": "https://github.com/vE5li/iamb-manuform",
     "maintainer": "vE5li",
+    "manufacturer": "vE5li",
+    "usb": {
+        "vid": "0x444D",
+        "pid": "0x3435",
+        "device_version": "1.0.0"
+    },
     "layouts": {
         "LAYOUT": {
             "layout": [
@@ -49,21 +55,17 @@
 
                 {"x": 3, "y": 4},
                 {"x": 4, "y": 4},
+                {"x": 5, "y": 4},
 
+                {"x": 9, "y": 4},
                 {"x": 10, "y": 4},
                 {"x": 11, "y": 4},
 
+                {"x": 4, "y": 5},
                 {"x": 5, "y": 5},
-                {"x": 6, "y": 5},
 
-                {"x": 8, "y": 5},
                 {"x": 9, "y": 5},
-
-                {"x": 5, "y": 6},
-                {"x": 6, "y": 6},
-
-                {"x": 8, "y": 6},
-                {"x": 9, "y": 6}
+                {"x": 10, "y": 5},
             ]
         }
     }
