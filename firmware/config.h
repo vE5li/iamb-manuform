@@ -55,14 +55,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DIODE_DIRECTION ROW2COL
 #define MATRIX_ROW_PINS { F0, F5, F6, C7, C6 }
 #define MATRIX_COL_PINS { F7, D4, D5, D2, D3 }
-#define RGB_DI_PIN F1
+#define WS2812_DI_PIN F1
 
 /* wiring of right half */
 #else
 #define DIODE_DIRECTION COL2ROW
 #define MATRIX_ROW_PINS { B1, B2, D3, D6, D7 }
 #define MATRIX_COL_PINS { C6, C7, D4, B5, B4 }
-#define RGB_DI_PIN B0
+#define WS2812_DI_PIN B0
 #endif
 
 /* detecting handedness */
